@@ -5,6 +5,7 @@
  */
 package domain;
 
+import file.FileManagerJson;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -40,14 +41,14 @@ public class Pruebas {
                 
             }
             
-            fmj.deleteFile("mesa");
+//            fmj.deleteFile("mesa");
             
         } catch (IOException ex) {
             Logger.getLogger(Pruebas.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParseException ex) {
             Logger.getLogger(Pruebas.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (java.text.ParseException ex) {
-            Logger.getLogger(Pruebas.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (java.text.ParseException ex) {
+//            Logger.getLogger(Pruebas.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }

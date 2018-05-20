@@ -65,6 +65,11 @@ public class Mesa {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
+
+    @Override
+    public String toString() {
+        return "Mesa{" + "estado=" + estado + ", numero=" + numero + ", pedido=" + pedido + ", pago=" + pago + ", cliente=" + cliente + '}';
+    }
     
     
 }

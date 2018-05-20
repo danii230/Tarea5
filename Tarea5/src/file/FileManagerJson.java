@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package domain;
+package file;
 
 import com.google.gson.Gson;
+import domain.Mesa;
+import domain.Platillo;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -27,8 +29,8 @@ import org.json.simple.parser.ParseException;
  */
 public class FileManagerJson {
 
-    final String pathMesa = "C:\\Users\\ValeriaLeivaQuirós\\Downloads\\Tarea5\\mesas.json";
-    final String pathPlatillos = "C:\\Users\\ValeriaLeivaQuirós\\Downloads\\Tarea5\\platillos.json";
+    final String pathMesa = "src\\file\\mesas.json";
+    final String pathPlatillos = "src\\file\\platillos.json";
     JSONObject vehicleObject;
 
     FileWriter file;
