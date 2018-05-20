@@ -6,27 +6,36 @@
 package tarea5p;
 
 import java.net.URL;
-
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 /**
+ * FXML Controller class
  *
- * @author daniela
+ * @author ValeriaLeivaQuirós
  */
-public class FXMLDocumentController implements Initializable {
+public class FXMLController implements Initializable {
 
     @FXML
     private AnchorPane pane;
-    @FXML
-    private ImageView imagen1;
 
+    @FXML
+    private ImageView img1;
+
+    @FXML
+    private ImageView img2;
+
+    @FXML
+    private ImageView img3;
+
+    /**
+     * Initializes the controller class.
+     */
+    @Override
     public void initialize(URL url, ResourceBundle rb) {
         String backgroundImage = "/imagen/restaurante.jpg";
         pane.setStyle("-fx-background-image: url('" + backgroundImage + "'); "
@@ -34,7 +43,10 @@ public class FXMLDocumentController implements Initializable {
                 + "-fx-background-repeat: no-repeat;"
                 + "-fx-background-size: cover, auto;");
 
-        Image im = new Image("/imagen/restaurante.jpg");
-        imagen1.setImage(im);
+        Image image = new Image("/imagen/table-vacio.png");
+        img1.setImage(image);
+        img2.setImage(image);
+        img3.setImage(image);
     }
+
 }
