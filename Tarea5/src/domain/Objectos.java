@@ -3,12 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package data;
+package domain;
 
 /**
  *
- * @author daniela
+ * @author ValeriaLeivaQuirós
  */
-public class ControladorRestaurante {
-    
-}
+public enum Objectos {
+
+
+    /*
+	 * 
+     */
+    MESA,
+    /**
+     *
+     */
+    PLATILLOS,
+    /**
+     *
+     */
+    PREMIOS,
+
+};

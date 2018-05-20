@@ -3,9 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package domain;
+package file;
 
 import com.google.gson.Gson;
+import domain.Mesa;
+import static domain.Objectos.MESA;
+import static domain.Objectos.PLATILLOS;
+import static domain.Objectos.PREMIOS;
+import domain.Platillo;
+import domain.Premios;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -27,8 +33,9 @@ import org.json.simple.parser.ParseException;
  */
 public class FileManagerJson {
 
-    final String pathMesa = "C:\\Users\\ValeriaLeivaQuirós\\Downloads\\Tarea5\\mesas.json";
-    final String pathPlatillos = "C:\\Users\\ValeriaLeivaQuirós\\Downloads\\Tarea5\\platillos.json";
+    final String pathMesa = "src\\mesas.json";
+    final String pathPlatillos = "src\\platillos.json";
+    final String pathPremios = "src\\premioss.json";
     JSONObject vehicleObject;
 
     FileWriter file;
@@ -64,15 +71,25 @@ public class FileManagerJson {
                 }
             }
         }
+        if (objeto.get(0) instanceof Premios) {
+            for (int i = 0; i < objeto.size(); i++) {
+                jsonObject = gson.toJson(objeto.get(i), Premios.class);
+
+                try (FileWriter fileWriter = new FileWriter(pathPremios, true)) {
+
+                    fileWriter.write(jsonObject + "\r\n");
+                }
+            }
+        }
 
     }
 
-    public ArrayList<Object> getObjectsFromFile(String tipoObject) throws org.json.simple.parser.ParseException, IOException {
+    public ArrayList<Object> getObjectsFromFile(Enum tipoObject) throws org.json.simple.parser.ParseException, IOException {
         Gson gson = new Gson();
         ArrayList<Object> objects = new ArrayList<>();
 
         String line = null;
-        if (tipoObject.equals("mesa")) {
+        if (tipoObject.equals(MESA)) {
             FileReader fileReader = new FileReader(pathMesa);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             while ((line = bufferedReader.readLine()) != null) {
@@ -84,7 +101,7 @@ public class FileManagerJson {
 
             bufferedReader.close();
         }
-        if (tipoObject.equals("platillos")) {
+        if (tipoObject.equals(PLATILLOS)) {
             FileReader fileReader = new FileReader(pathPlatillos);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             while ((line = bufferedReader.readLine()) != null) {
@@ -96,12 +113,24 @@ public class FileManagerJson {
 
             bufferedReader.close();
         }
+        if (tipoObject.equals(PREMIOS)) {
+            FileReader fileReader = new FileReader(pathPremios);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            while ((line = bufferedReader.readLine()) != null) {
+
+                Premios p = gson.fromJson(line, Premios.class);
+
+                objects.add(p);
+            }
+
+            bufferedReader.close();
+        }
 
         return objects;
     }
 
-    public void deleteFile(String tipoObject) throws java.text.ParseException {
-        if (tipoObject.equals("mesa")) {
+    public void deleteFile(Enum tipoObject) throws java.text.ParseException {
+        if (tipoObject.equals(MESA)) {
             File fileDelete = new File(pathMesa);
 
             fileDelete.delete();
