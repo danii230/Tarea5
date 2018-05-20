@@ -6,9 +6,6 @@
 package tarea5p;
 
 import java.net.URL;
-
-
-
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,17 +24,17 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     private AnchorPane pane;
+
+//    @FXML
+//    private ImageView im1;
 //
 //    @FXML
-//    private ImageView imagen1;
+//    private ImageView im2;
 //
 //    @FXML
-//    private ImageView imagen2;
-//
-//    @FXML
-//    private ImageView imagen3;
+//    private ImageView im3;
 //    
-    
+//    
 
     
     @Override
@@ -49,11 +46,11 @@ public class FXMLDocumentController implements Initializable {
                 + "-fx-background-size: cover, auto;");
         
 //        Image imag = new Image("/imagen/table-2715994_960_720.png");
-//        imagen1 = new ImageView(imag);
-//        imagen2 = new ImageView(imag);
-//        imagen3 = new ImageView(imag);
-        
-       // pane.getChildren().addAll(imagen1);
+//        im1 = new ImageView(imag);
+//        im2 = new ImageView(imag);
+//        im3 = new ImageView(imag);
+//        
+//    
         
     }    
     
