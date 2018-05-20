@@ -35,14 +35,12 @@ public class FileManagerJson {
 
     final String pathMesa = "src\\mesas.json";
     final String pathPlatillos = "src\\platillos.json";
-    final String pathPremios = "src\\premioss.json";
-    JSONObject vehicleObject;
+    final String pathPremios = "src\\premios.json";
 
     FileWriter file;
 
     public FileManagerJson() {
 
-        vehicleObject = new JSONObject();
     }
 
     public void insertToFile(ArrayList<Object> objeto) throws IOException {
