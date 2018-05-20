@@ -8,6 +8,7 @@ package domain;
 import file.FileManagerJson;
 
 import domain.Mesa;
+import static domain.Objectos.MESA;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -29,15 +30,34 @@ public class Pruebas {
             FileManagerJson fmj = new FileManagerJson();
 
             ArrayList<Object> mesas = new ArrayList<>();
-            Mesa mesa1 = new Mesa("s", 0);
-            Mesa mesa2 = new Mesa("ss", 2);
+            Mesa mesa1 = new Mesa("vacio", 1);
+            Mesa mesa2 = new Mesa("vacio", 2);
+            Mesa mesa3 = new Mesa("vacio", 3);
             mesas.add(mesa1);
             mesas.add(mesa2);
+            mesas.add(mesa3);
             fmj.insertToFile(mesas);
 
             ArrayList<Object> mesas2 = new ArrayList<>();
 
-            mesas2 = fmj.getObjectsFromFile("mesa");
+            mesas2 = fmj.getObjectsFromFile(MESA);
+
+            for (int i = 0; i < mesas2.size(); i++) {
+                System.out.println(mesas2.get(i).toString());
+
+            }
+
+            ArrayList<Object> premios = new ArrayList<>();
+          Premios premios= new Premios()
+
+            mesas.add(mesa1);
+            mesas.add(mesa2);
+            mesas.add(mesa3);
+            fmj.insertToFile(mesas);
+
+            ArrayList<Object> mesas2 = new ArrayList<>();
+
+            mesas2 = fmj.getObjectsFromFile(MESA);
 
             for (int i = 0; i < mesas2.size(); i++) {
                 System.out.println(mesas2.get(i).toString());
@@ -49,9 +69,6 @@ public class Pruebas {
             Logger.getLogger(Pruebas.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParseException ex) {
             Logger.getLogger(Pruebas.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (java.text.ParseException ex) {
-//            Logger.getLogger(Pruebas.class.getName()).log(Level.SEVERE, null, ex);
-
         }
 
     }
