@@ -6,6 +6,7 @@
 package tarea5p;
 
 import java.net.URL;
+
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,7 +27,6 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private ImageView imagen1;
 
-    @Override
     public void initialize(URL url, ResourceBundle rb) {
         String backgroundImage = "/imagen/restaurante.jpg";
         pane.setStyle("-fx-background-image: url('" + backgroundImage + "'); "
@@ -37,5 +37,4 @@ public class FXMLDocumentController implements Initializable {
         Image im = new Image("/imagen/restaurante.jpg");
         imagen1.setImage(im);
     }
-
 }

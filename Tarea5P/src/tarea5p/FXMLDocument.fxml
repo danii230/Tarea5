@@ -3,9 +3,17 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
+<<<<<<< HEAD
 
 <AnchorPane id="AnchorPane" fx:id="pane" prefHeight="458.0" prefWidth="641.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tarea5p.FXMLDocumentController">
    <children>
       <ImageView fx:id="imagen1" fitHeight="128.0" fitWidth="175.0" layoutX="62.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true" />
+=======
+<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="458.0" prefWidth="641.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tarea5p.FXMLDocumentController">
+   <children>
+      <ImageView fitHeight="150.0" fitWidth="167.0" layoutX="41.0" layoutY="269.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="150.0" fitWidth="185.0" layoutX="268.0" layoutY="269.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="150.0" fitWidth="167.0" layoutX="477.0" layoutY="277.0" pickOnBounds="true" preserveRatio="true" />
+>>>>>>> 76c5a8b9b05e80fd067bcf7fd3f064824f55ccef
    </children>
 </AnchorPane>
