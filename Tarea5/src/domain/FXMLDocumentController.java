@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 
 /**
  *
@@ -20,17 +21,17 @@ import javafx.scene.control.Label;
 public class FXMLDocumentController implements Initializable {
     
     @FXML
-    private Label label;
+    private AnchorPane pane;
     
-    @FXML
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
-    }
+
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+//      String backgroundImage = "/imagen/restaurante.jpg";
+//        pane.setStyle("-fx-background-image: url('" + backgroundImage + "'); "
+//                            +"-fx-background-position: left top, center;"
+//                            +"-fx-background-repeat: no-repeat;"
+//                            +"-fx-background-size: cover, auto;");
     }    
     
 }

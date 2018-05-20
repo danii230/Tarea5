@@ -47,6 +47,8 @@ public class Pruebas {
             Logger.getLogger(Pruebas.class.getName()).log(Level.SEVERE, null, ex);
         } catch (java.text.ParseException ex) {
             Logger.getLogger(Pruebas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(Pruebas.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
