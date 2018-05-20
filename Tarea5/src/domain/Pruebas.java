@@ -5,7 +5,11 @@
  */
 package domain;
 
+<<<<<<< HEAD
 import file.FileManagerJson;
+=======
+import domain.Mesa;
+>>>>>>> 5175ec46be2153d85d63afd2cb62842ab1f2d1f9
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -45,10 +49,15 @@ public class Pruebas {
             
         } catch (IOException ex) {
             Logger.getLogger(Pruebas.class.getName()).log(Level.SEVERE, null, ex);
+<<<<<<< HEAD
         } catch (ParseException ex) {
             Logger.getLogger(Pruebas.class.getName()).log(Level.SEVERE, null, ex);
 //        } catch (java.text.ParseException ex) {
 //            Logger.getLogger(Pruebas.class.getName()).log(Level.SEVERE, null, ex);
+=======
+        } catch (java.text.ParseException ex) {
+            Logger.getLogger(Pruebas.class.getName()).log(Level.SEVERE, null, ex);
+>>>>>>> 5175ec46be2153d85d63afd2cb62842ab1f2d1f9
         }
         
     }
