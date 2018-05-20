@@ -11,22 +11,24 @@ package domain;
  */
 public class Premios {
 
-    private float descuento;
+    private int descuento;
 
     public Premios() {
     }
 
-    public Premios(float descuento) {
+    public Premios(int descuento) {
         this.descuento = descuento;
     }
 
-    public float getDescuento() {
+    public int getDescuento() {
         return descuento;
     }
 
-    public void setDescuento(float descuento) {
+    public void setDescuento(int descuento) {
         this.descuento = descuento;
     }
+
+  
 
     @Override
     public String toString() {

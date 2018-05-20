@@ -1,14 +1,16 @@
+package domain;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package domain;
-
 import file.FileManagerJson;
 
 import domain.Mesa;
 import static domain.Objectos.MESA;
+import static domain.Objectos.PLATILLOS;
+import static domain.Objectos.PREMIOS;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -28,7 +30,7 @@ public class Pruebas {
     public static void main(String[] args) {
         try {
             FileManagerJson fmj = new FileManagerJson();
-
+            // mesa
             ArrayList<Object> mesas = new ArrayList<>();
             Mesa mesa1 = new Mesa("vacio", 1);
             Mesa mesa2 = new Mesa("vacio", 2);
@@ -47,20 +49,43 @@ public class Pruebas {
 
             }
 
-            ArrayList<Object> premios = new ArrayList<>();
-          Premios premios= new Premios()
+            // premios
+            ArrayList< Object> premios = new ArrayList<>();
+            Premios premio1 = new Premios(10);
+            Premios premio2 = new Premios(10);
 
-            mesas.add(mesa1);
-            mesas.add(mesa2);
-            mesas.add(mesa3);
-            fmj.insertToFile(mesas);
+            premios.add(premio1);
+            premios.add(premio2);
+            fmj.insertToFile(premios);
+            ArrayList<Object> premios2 = new ArrayList<>();
 
-            ArrayList<Object> mesas2 = new ArrayList<>();
+            premios2 = fmj.getObjectsFromFile(PREMIOS);
 
-            mesas2 = fmj.getObjectsFromFile(MESA);
+            for (int i = 0; i < premios2.size(); i++) {
+                System.out.println(premios2.get(i).toString());
 
-            for (int i = 0; i < mesas2.size(); i++) {
-                System.out.println(mesas2.get(i).toString());
+            }
+
+            /// platillos
+            ArrayList<Object> platillos = new ArrayList<>();
+            Platillo platillo1 = new Platillo(5000, "Camarones", "1");
+            Platillo platillo2 = new Platillo(1200, "Arroz con Pollo", "2");
+            Platillo platillo3 = new Platillo(1200, "Fideos", "3");
+            Platillo platillo4 = new Platillo(1200, "Helado", "4");
+            Platillo platillo5 = new Platillo(4000, "Gordon blue", "1");
+
+            platillos.add(platillo1);
+            platillos.add(platillo2);
+            platillos.add(platillo3);
+            platillos.add(platillo4);
+            platillos.add(platillo5);
+
+            ArrayList<Object> platillos2 = new ArrayList<>();
+
+            platillos2 = fmj.getObjectsFromFile(PLATILLOS);
+
+            for (int i = 0; i < platillos2.size(); i++) {
+                System.out.println(platillos2.get(i).toString());
 
             }
 
