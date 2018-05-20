@@ -46,6 +46,11 @@ public class Platillo {
     public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
+
+    @Override
+    public String toString() {
+        return "Platillo{" + "precio=" + precio + ", nombre=" + nombre + ", codigo=" + codigo + '}';
+    }
     
     
 }
