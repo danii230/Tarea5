@@ -65,48 +65,31 @@ public class OcupadoController implements Initializable {
 
     @FXML
     private Button ordenarPedido;
-<<<<<<< HEAD
     @FXML
     private Label suma;
-=======
->>>>>>> 068516b16829ab7304648b31e15e03a4d85241f0
 
     private int posicionMenuTabla;
     private int posicionListaPedidos;
     public Platillo platilloSeleccionado;
     ControladorRestaurante controladorRestaurante;
-<<<<<<< HEAD
     Restaurante restaurante;
     ArrayList<Object> listaDePedidos;
     ClaseObservadora claseObservadora;
-=======
-    ArrayList<Object> listaDePedidos;
->>>>>>> 068516b16829ab7304648b31e15e03a4d85241f0
 
     @FXML
     private void añadir(ActionEvent event) {
         pedidos.add(platilloSeleccionado);
-<<<<<<< HEAD
-=======
-
-        listaDePedidos.add(platilloSeleccionado);
->>>>>>> 068516b16829ab7304648b31e15e03a4d85241f0
 
     }
 
     @FXML
     private void retirar(ActionEvent event) {
         pedidos.remove(posicionListaPedidos);
-<<<<<<< HEAD
 
-=======
-        listaDePedidos.remove(platilloSeleccionado);
->>>>>>> 068516b16829ab7304648b31e15e03a4d85241f0
     }
 
     @FXML
     private void generarCobro(ActionEvent event) {
-<<<<<<< HEAD
         int suma1 = 0;
         if (claseObservadora.getMesa().getPremio() == 0) {
             for (int i = 0; i < pedidos.size(); i++) {
@@ -130,14 +113,10 @@ public class OcupadoController implements Initializable {
                     + "\n con un descuento de: " + claseObservadora.getMesa().getPremio()
                     + "\n total a pagar: " + totalFinal);
         }
-=======
-
->>>>>>> 068516b16829ab7304648b31e15e03a4d85241f0
     }
 
     @FXML
     private void ordenarPedido(ActionEvent event) {
-<<<<<<< HEAD
         for (int i = 0; i < pedidos.size(); i++) {
             Object platillos = (Platillo) pedidos.get(i);
 
@@ -146,12 +125,6 @@ public class OcupadoController implements Initializable {
         }
 
         claseObservadora.getMesa().setPedido(listaDePedidos);
-=======
-        ClaseObservadora claseObservadora= new ClaseObservadora();
-        claseObservadora.getMesa().se
-        
-        
->>>>>>> 068516b16829ab7304648b31e15e03a4d85241f0
 
     }
 
@@ -254,7 +227,6 @@ public class OcupadoController implements Initializable {
             platillos.add(p1);
         }
 
-<<<<<<< HEAD
         // Seleccionar las tuplas de la tabla de las personas
         final ObservableList<Platillo> tablaPersonaSel2 = tablaPedidos.getSelectionModel().getSelectedItems();
         tablaPersonaSel2.addListener(selectorTablaPLatillosPedidos);
@@ -270,25 +242,6 @@ public class OcupadoController implements Initializable {
                 pedidos.add(p1);
 
             }
-=======
-        // Inicializamos la tabla
-        this.inicializarTablaPedidos();
-        this.inicializarTablaPlatillos();
-        controladorRestaurante = new ControladorRestaurante();
-        // Seleccionar las tuplas de la tabla de las personas
-        final ObservableList<Platillo> tablaPersonaSel = tablaMenu.getSelectionModel().getSelectedItems();
-        tablaPersonaSel.addListener(selectorTablaPLatillos);
-        // Inicializamos la tabla con algunos datos aleatorios
-        for (int i = 0; i < controladorRestaurante.getRestaurante().getListaMenu().size(); i++) {
-            Platillo p1 = new Platillo();
-            p1 = (Platillo) controladorRestaurante.getRestaurante().getListaMenu().get(i);
-            System.out.println(p1.toString());
-
-            platillos.add(p1);
->>>>>>> 068516b16829ab7304648b31e15e03a4d85241f0
         }
-        // Seleccionar las tuplas de la tabla de las personas
-        final ObservableList<Platillo> tablaPersonaSel2 = tablaPedidos.getSelectionModel().getSelectedItems();
-        tablaPersonaSel2.addListener(selectorTablaPLatillosPedidos);
     }
 }

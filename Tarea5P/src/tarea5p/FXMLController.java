@@ -5,10 +5,7 @@
  */
 package tarea5p;
 
-<<<<<<< HEAD
 import domain.ClaseObservadora;
-=======
->>>>>>> 068516b16829ab7304648b31e15e03a4d85241f0
 import domain.ControladorRestaurante;
 import domain.Mesa;
 import domain.Restaurante;
@@ -58,10 +55,7 @@ public class FXMLController implements Initializable {
     ReservacionController rese;
 
     static int numero = 0;
-<<<<<<< HEAD
     ClaseObservadora claseObservadora;
-=======
->>>>>>> 068516b16829ab7304648b31e15e03a4d85241f0
 
     /**
      * Initializes the controller class.
@@ -92,11 +86,8 @@ public class FXMLController implements Initializable {
         img3.setId("2");
         controladorRestaurante = new ControladorRestaurante();
         mesas = controladorRestaurante.getRestaurante().getListaMesas();
-<<<<<<< HEAD
 
         claseObservadora = new ClaseObservadora();
-=======
->>>>>>> 068516b16829ab7304648b31e15e03a4d85241f0
         //        llenarLista();
 //
 //        System.out.println(mesas.get(0));
@@ -107,7 +98,6 @@ public class FXMLController implements Initializable {
     @FXML
     void a(MouseEvent event) throws IOException {
 
-<<<<<<< HEAD
         claseObservadora.setMesa((Mesa) mesas.get(0));
         System.out.println("seleccione"+claseObservadora.getMesa().toString());
 
@@ -117,36 +107,12 @@ public class FXMLController implements Initializable {
         stage.setTitle("Menu");
         stage.setScene(scene);
         stage.show();
-=======
-        mesa = (Mesa) mesas.get(0);
-        System.out.println(mesa.toString());
-        numero = mesa.getNumero();
-
-        if (mesa.getEstado().equalsIgnoreCase("vacia")) {
-            Parent root = FXMLLoader.load(getClass().getResource("Reservacion.fxml"));
-            Scene scene = new Scene(root);
-            Stage stage = new Stage(StageStyle.DECORATED);
-            stage.setTitle("Reservar");
-            stage.setScene(scene);
-            stage.show();
-
-        } else if (mesa.getEstado().equalsIgnoreCase("reservada")) {
-            Parent root = FXMLLoader.load(getClass().getResource("Cancelar.fxml"));
-            Scene scene = new Scene(root);
-            Stage stage = new Stage(StageStyle.DECORATED);
-            stage.setTitle("Cancelar Reservacion");
-            stage.setScene(scene);
-            stage.show();
-
-        }
->>>>>>> 068516b16829ab7304648b31e15e03a4d85241f0
 
     }
 
     @FXML
     void b(MouseEvent event) throws IOException {
 
-<<<<<<< HEAD
         claseObservadora.setMesa((Mesa) mesas.get(1));
 
         Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
@@ -155,34 +121,12 @@ public class FXMLController implements Initializable {
         stage.setTitle("Menu");
         stage.setScene(scene);
         stage.show();
-=======
-        mesa = (Mesa) mesas.get(1);
-        numero = mesa.getNumero();
-
-        if (mesa.getEstado().equalsIgnoreCase("vacia")) {
-            Parent root = FXMLLoader.load(getClass().getResource("Reservacion.fxml"));
-            Scene scene = new Scene(root);
-            Stage stage = new Stage(StageStyle.DECORATED);
-            stage.setTitle("Reservar");
-            stage.setScene(scene);
-            stage.show();
-        } else if (mesa.getEstado().equalsIgnoreCase("reservada")) {
-            Parent root = FXMLLoader.load(getClass().getResource("Cancelar.fxml"));
-            Scene scene = new Scene(root);
-            Stage stage = new Stage(StageStyle.DECORATED);
-            stage.setTitle("Cancelar Reservacion");
-            stage.setScene(scene);
-            stage.show();
-
-        }
->>>>>>> 068516b16829ab7304648b31e15e03a4d85241f0
 
     }
 
     @FXML
     void c(MouseEvent event) throws IOException {
 
-<<<<<<< HEAD
         claseObservadora.setMesa((Mesa) mesas.get(2));
 
         Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
@@ -191,27 +135,6 @@ public class FXMLController implements Initializable {
         stage.setTitle("Menu");
         stage.setScene(scene);
         stage.show();
-=======
-        mesa = (Mesa) mesas.get(2);
-        numero = mesa.getNumero();
-
-        if (mesa.getEstado().equalsIgnoreCase("vacia")) {
-            Parent root = FXMLLoader.load(getClass().getResource("Reservacion.fxml"));
-            Scene scene = new Scene(root);
-            Stage stage = new Stage(StageStyle.DECORATED);
-            stage.setTitle("Reservar");
-            stage.setScene(scene);
-            stage.show();
-        } else if (mesa.getEstado().equalsIgnoreCase("reservada")) {
-            Parent root = FXMLLoader.load(getClass().getResource("Cancelar.fxml"));
-            Scene scene = new Scene(root);
-            Stage stage = new Stage(StageStyle.DECORATED);
-            stage.setTitle("Cancelar Reservacion");
-            stage.setScene(scene);
-            stage.show();
-
-        }
->>>>>>> 068516b16829ab7304648b31e15e03a4d85241f0
 
     }
 

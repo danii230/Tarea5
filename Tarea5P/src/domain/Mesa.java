@@ -16,14 +16,8 @@ public class Mesa {
     private String estado;
     private int numero;
     private Reservacion reservacion;
-<<<<<<< HEAD
     private ArrayList<Object> pedido;
     private int premio;
-=======
-    private ArrayList<Platillo> pedido;
-//    private Pago pago;
-//    private Cliente cliente;
->>>>>>> 068516b16829ab7304648b31e15e03a4d85241f0
 
     public Mesa() {
     }
@@ -91,17 +85,6 @@ public class Mesa {
         this.premio = premio;
     }
 
-<<<<<<< HEAD
-=======
-    public ArrayList<Platillo> getPedido() {
-        return pedido;
-    }
-
-    public void setPedido(ArrayList<Platillo> pedido) {
-        this.pedido = pedido;
-    }
-//
->>>>>>> 068516b16829ab7304648b31e15e03a4d85241f0
 //    public Pago getPago() {
 //        return pago;
 //    }
