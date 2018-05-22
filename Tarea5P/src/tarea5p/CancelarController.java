@@ -82,6 +82,7 @@ public class CancelarController implements Initializable {
         cedula.setText(rese.getCedula());
         numero.setText(rese.getNumero());
         correo.setText(rese.getCorreo());
+        fecha.setText(rese.getFecha());
         hora.setText(rese.getHora());
         
         
@@ -93,6 +94,7 @@ public class CancelarController implements Initializable {
         cedula.setText(rese.getCedula());
         numero.setText(rese.getNumero());
         correo.setText(rese.getCorreo());
+         fecha.setText(rese.getFecha());
          hora.setText(rese.getHora());
         
         } else if(controller.numero==3){
@@ -102,6 +104,7 @@ public class CancelarController implements Initializable {
         cedula.setText(rese.getCedula());
         numero.setText(rese.getNumero());
         correo.setText(rese.getCorreo());
+         fecha.setText(rese.getFecha());
          hora.setText(rese.getHora());
        
         }

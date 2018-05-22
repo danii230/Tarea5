@@ -103,9 +103,14 @@ public class ReservacionController implements Initializable {
         String cedula = tCedula.getText();
         String numero = tNumero.getText();
         String correo = tCorreo.getText();
-        //String fecha = calendario.
+       
+        String dia = (calendario.getValue().getDayOfMonth()+"");
+        String mes = (calendario.getValue().getMonth()+"");
+        String año = (calendario.getValue().getYear()+"");
+        String fecha = (dia+"-"+mes+"-"+año);
+        
         String hora = tHora.getText();
-        reserva = new Reservacion(nombre, cedula, numero, correo, "",hora);
+        reserva = new Reservacion(nombre, cedula, numero, correo, fecha, hora);
         Mesa mesaR = new Mesa("reservada", 1, reserva);
         mesas.set(0, mesaR);
         System.out.println(mesas.get(0));
@@ -116,9 +121,14 @@ public class ReservacionController implements Initializable {
         String cedula = tCedula.getText();
         String numero = tNumero.getText();
         String correo = tCorreo.getText();
-        //String fecha = calendario.
+        
+        String dia = (calendario.getValue().getDayOfMonth()+"");
+        String mes = (calendario.getValue().getMonth()+"");
+        String año = (calendario.getValue().getYear()+"");
+        String fecha = (dia+"-"+mes+"-"+año);
+        
         String hora = tHora.getText();
-        reserva = new Reservacion(nombre, cedula, numero, correo, "",hora);
+        reserva = new Reservacion(nombre, cedula, numero, correo, fecha, hora);
         Mesa mesaR = new Mesa("reservada", 2, reserva);
         mesas.set(1, mesaR);
         System.out.println(mesas.get(1));
@@ -128,9 +138,15 @@ public class ReservacionController implements Initializable {
         String cedula = tCedula.getText();
         String numero = tNumero.getText();
         String correo = tCorreo.getText();
-        //String fecha = calendario.
+        
+        
+        String dia = (calendario.getValue().getDayOfMonth()+"");
+        String mes = (calendario.getValue().getMonth()+"");
+        String año = (calendario.getValue().getYear()+"");
+        String fecha = (dia+"-"+mes+"-"+año);
+        
         String hora = tHora.getText();
-        reserva = new Reservacion(nombre, cedula, numero, correo, "",hora);
+        reserva = new Reservacion(nombre, cedula, numero, correo, fecha, hora);
         Mesa mesaR = new Mesa("reservada", 3, reserva);
         mesas.set(2, mesaR);
         System.out.println(mesas.get(2));
