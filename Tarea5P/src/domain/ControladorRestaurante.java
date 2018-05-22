@@ -11,6 +11,9 @@ import static domain.Objectos.PREMIOS;
 import file.FileManagerJson;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.json.simple.parser.ParseException;
 
 /**
@@ -20,23 +23,39 @@ import org.json.simple.parser.ParseException;
 public class ControladorRestaurante {
 
     private static Restaurante restaurante;
-    FileManagerJson fileManagerJson;
 
-    public ControladorRestaurante() {
+    public ControladorRestaurante() throws ParseException, IOException {
+        restaurante = new Restaurante();
+        llenarListaMenu();
+        llenarListaMesas();
+        llenarListaPremios();
+
     }
 
     public void llenarListaMesas() throws ParseException, IOException {
-        restaurante.setListaMesas(fileManagerJson.getObjectsFromFile(MESA));
+        ArrayList<Object> listaMesas = new ArrayList<>();
+        FileManagerJson fileManagerJson = new FileManagerJson();
+        listaMesas = fileManagerJson.getObjectsFromFile(MESA);
+        restaurante.setListaMesas(listaMesas);
 
     }
 
     public void llenarListaMenu() throws ParseException, IOException {
-        restaurante.setListaMenu(fileManagerJson.getObjectsFromFile(PLATILLOS));
+
+        ArrayList<Object> platillosMenu = new ArrayList<>();
+        FileManagerJson fileManagerJson = new FileManagerJson();
+        platillosMenu = fileManagerJson.getObjectsFromFile(PLATILLOS);
+
+        restaurante.setListaMenu(platillosMenu);
 
     }
 
     public void llenarListaPremios() throws ParseException, IOException {
-        restaurante.setListaPremios(fileManagerJson.getObjectsFromFile(PREMIOS));
+        ArrayList<Object> listaPremios = new ArrayList<>();
+        FileManagerJson fileManagerJson = new FileManagerJson();
+        listaPremios = fileManagerJson.getObjectsFromFile(PREMIOS);
+
+        restaurante.setListaPremios(listaPremios);
 
     }
 

@@ -5,7 +5,11 @@
  */
 package domain;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.json.simple.parser.ParseException;
 
 /**
  *
@@ -16,6 +20,12 @@ public class Restaurante {
     private ArrayList<Object> listaMesas;
     private ArrayList<Object> listaMenu;
     private ArrayList<Object> listaPremios;
+    private String nombre;
+    ControladorRestaurante controladorRestaurante;
+
+    public Restaurante() {
+
+    }
 
     public ArrayList<Object> getListaMesas() {
         return listaMesas;
@@ -39,6 +49,14 @@ public class Restaurante {
 
     public void setListaPremios(ArrayList<Object> listaPremios) {
         this.listaPremios = listaPremios;
+    }
+
+    public ControladorRestaurante getControladorRestaurante() {
+        return controladorRestaurante;
+    }
+
+    public void setControladorRestaurante(ControladorRestaurante controladorRestaurante) {
+        this.controladorRestaurante = controladorRestaurante;
     }
 
 }

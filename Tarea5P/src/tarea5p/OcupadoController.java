@@ -5,6 +5,7 @@
  */
 package tarea5p;
 
+import domain.ControladorRestaurante;
 import domain.Platillo;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -13,10 +14,17 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import domain.Restaurante;
+import java.io.IOException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.cell.PropertyValueFactory;
+import org.json.simple.parser.ParseException;
 
 /**
  * FXML Controller class
@@ -26,16 +34,21 @@ import javafx.scene.control.TableColumn;
 public class OcupadoController implements Initializable {
 
     @FXML
-    private TableView<Platillo> listaMenu;
-    private TableColumn nombre;
-    private TableColumn precio;
-    ObservableList<Platillo> menu;
+    private TableView<Platillo> tablaMenu;
+    @FXML
+    private TableColumn nombreCL;
+    @FXML
+    private TableColumn precioCL;
+    ObservableList< Platillo> platillos;
 
     @FXML
-    private TableView<Platillo> listaPedidos;
-    private TableColumn nombrePedido;
-    private TableColumn precioPedido;
-    ObservableList<Platillo> pedido;
+    private TableView<Platillo> tablaPedidos;
+    @FXML
+    private TableColumn nombrePedidoCL;
+    @FXML
+    private TableColumn precioPedidoCL;
+
+    ObservableList<Platillo> pedidos;
     @FXML
     private Button añadir;
 
@@ -45,35 +58,137 @@ public class OcupadoController implements Initializable {
     @FXML
     private Button generarCobro;
 
-    private int posicionListaMenuTabla;
+    private int posicionMenuTabla;
     private int posicionListaPedidos;
-    public Platillo platillo;
+    public Platillo platilloSeleccionado;
+    ControladorRestaurante controladorRestaurante;
 
     @FXML
     private void añadir(ActionEvent event) {
-        pedido.add(platillo);
+        pedidos.add(platilloSeleccionado);
+        System.out.print("la lista de pedidos" + pedidos.get(0).toString());
 
     }
 
     @FXML
     private void retirar(ActionEvent event) {
-        pedido.remove(posicionListaPedidos);
+        pedidos.remove(posicionListaPedidos);
     }
 
     @FXML
     private void generarCobro(ActionEvent event) {
     }
-    
- 
-        
-        
 
-/**
- * Initializes the controller class.
- */
-@Override
-        public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+    private final ListChangeListener<Platillo> selectorTablaPLatillos
+            = new ListChangeListener<Platillo>() {
+        @Override
+        public void onChanged(ListChangeListener.Change<? extends Platillo> c) {
+            ponerPlatilloSeleccionada();
+        }
+    };
+
+    /**
+     * PARA SELECCIONAR UNA CELDA DE LA TABLA "tablaPersonas"
+     */
+    public Platillo getTablaPersonasSeleccionada() {
+        if (tablaMenu != null) {
+            List<Platillo> tabla = tablaMenu.getSelectionModel().getSelectedItems();
+            if (tabla.size() == 1) {
+                final Platillo competicionSeleccionada = tabla.get(0);
+                return competicionSeleccionada;
+            }
+        }
+        return null;
     }
 
+    private final ListChangeListener<Platillo> selectorTablaPLatillosPedidos
+            = new ListChangeListener<Platillo>() {
+        @Override
+        public void onChanged(ListChangeListener.Change<? extends Platillo> c) {
+            ponerPlatilloSeleccionada();
+        }
+    };
+
+    /**
+     * PARA SELECCIONAR UNA CELDA DE LA TABLA "tablaPersonas"
+     */
+    public Platillo getTablaPedidosSeleccionada() {
+        if (tablaPedidos != null) {
+            List<Platillo> tabla = tablaPedidos.getSelectionModel().getSelectedItems();
+            if (tabla.size() == 1) {
+                final Platillo competicionSeleccionada = tabla.get(0);
+                return competicionSeleccionada;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Método para poner en los textFields la tupla que selccionemos
+     */
+    private void ponerPlatilloSeleccionada() {
+        final Platillo platillo = getTablaPersonasSeleccionada();
+        posicionMenuTabla = platillos.indexOf(platillo);
+
+        if (platillo != null) {
+            platilloSeleccionado = platillo;
+            System.out.println("Platillo!!!" + platilloSeleccionado.toString());
+
+//            pedidos.add(platillo);
+        }
+    }
+
+    /**
+     * Método para inicializar la tabla
+     */
+    private void inicializarTablaPlatillos() {
+        nombreCL.setCellValueFactory(new PropertyValueFactory<Platillo, String>("nombre"));
+        precioCL.setCellValueFactory(new PropertyValueFactory<Platillo, Double>("precio"));
+
+        platillos = FXCollections.observableArrayList();
+        tablaMenu.setItems(platillos);
+
+    }
+
+    private void inicializarTablaPedidos() {
+        nombrePedidoCL.setCellValueFactory(new PropertyValueFactory<Platillo, String>("nombre"));
+        precioPedidoCL.setCellValueFactory(new PropertyValueFactory<Platillo, Double>("precio"));
+
+        pedidos = FXCollections.observableArrayList();
+        tablaPedidos.setItems(pedidos);
+
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+
+        try {
+            // Inicializamos la tabla
+            this.inicializarTablaPedidos();
+            this.inicializarTablaPlatillos();
+
+            controladorRestaurante = new ControladorRestaurante();
+
+            // Seleccionar las tuplas de la tabla de las personas
+            final ObservableList<Platillo> tablaPersonaSel = tablaMenu.getSelectionModel().getSelectedItems();
+            tablaPersonaSel.addListener(selectorTablaPLatillos);
+
+            // Inicializamos la tabla con algunos datos aleatorios
+            for (int i = 0; i < controladorRestaurante.getRestaurante().getListaMenu().size(); i++) {
+                Platillo p1 = new Platillo();
+                p1 = (Platillo) controladorRestaurante.getRestaurante().getListaMenu().get(i);
+                System.out.println(p1.toString());
+
+                platillos.add(p1);
+            }
+
+            // Seleccionar las tuplas de la tabla de las personas
+            final ObservableList<Platillo> tablaPersonaSel2 = tablaPedidos.getSelectionModel().getSelectedItems();
+            tablaPersonaSel2.addListener(selectorTablaPLatillosPedidos);
+        } catch (ParseException ex) {
+            Logger.getLogger(OcupadoController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(OcupadoController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

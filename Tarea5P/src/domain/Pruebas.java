@@ -28,6 +28,7 @@ public class Pruebas {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+
         try {
             FileManagerJson fmj = new FileManagerJson();
             // mesa
@@ -61,7 +62,7 @@ public class Pruebas {
             /// platillos
             ArrayList<Object> platillos = new ArrayList<>();
             Platillo platillo1 = new Platillo(5000, "Camarones", "1");
-            Platillo platillo2 = new Platillo(1200, "Arroz con Pollo", "2");
+            Platillo platillo2 = new Platillo(1200, "Patacones", "2");
             Platillo platillo3 = new Platillo(1200, "Fideos", "3");
             Platillo platillo4 = new Platillo(1200, "Helado", "4");
             Platillo platillo5 = new Platillo(4000, "Gordon blue", "1");
@@ -79,12 +80,11 @@ public class Pruebas {
 
             }
 
-//          
-        } catch (IOException ex) {
-            Logger.getLogger(Pruebas.class.getName()).log(Level.SEVERE, null, ex);
+//    
         } catch (ParseException ex) {
             Logger.getLogger(Pruebas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Pruebas.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 }

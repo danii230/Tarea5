@@ -23,20 +23,6 @@ public class FXMLController implements Initializable {
     @FXML
     private AnchorPane pane;
 
-<<<<<<< HEAD:Tarea5P/src/tarea5p/FXMLDocumentController.java
-//    @FXML
-//    private ImageView im1;
-//
-//    @FXML
-//    private ImageView im2;
-//
-//    @FXML
-//    private ImageView im3;
-//    
-//    
-
-    
-=======
     @FXML
     private ImageView img1;
 
@@ -49,7 +35,6 @@ public class FXMLController implements Initializable {
     /**
      * Initializes the controller class.
      */
->>>>>>> af988ddf9a88ac3884128f00e26468a5096dbcc7:Tarea5P/src/tarea5p/FXMLController.java
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         String backgroundImage = "/imagen/restaurante.jpg";
@@ -57,18 +42,6 @@ public class FXMLController implements Initializable {
                 + "-fx-background-position: left top, center;"
                 + "-fx-background-repeat: no-repeat;"
                 + "-fx-background-size: cover, auto;");
-<<<<<<< HEAD:Tarea5P/src/tarea5p/FXMLDocumentController.java
-        
-//        Image imag = new Image("/imagen/table-2715994_960_720.png");
-//        im1 = new ImageView(imag);
-//        im2 = new ImageView(imag);
-//        im3 = new ImageView(imag);
-//        
-//    
-        
-    }    
-    
-=======
 
         Image image = new Image("/imagen/table-vacio.png");
         img1.setImage(image);
@@ -76,5 +49,4 @@ public class FXMLController implements Initializable {
         img3.setImage(image);
     }
 
->>>>>>> af988ddf9a88ac3884128f00e26468a5096dbcc7:Tarea5P/src/tarea5p/FXMLController.java
 }
