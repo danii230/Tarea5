@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Mesa {
     private String estado;
     private int numero;
-    private Reservacion reserva;
+    private Reservacion reservacion;
 //    private ArrayList<Platillo> pedido;
 //    private Pago pago;
 //    private Cliente cliente;
@@ -27,10 +27,10 @@ public class Mesa {
         this.numero = numero;
     }
 
-    public Mesa(String estado, int numero, Reservacion reserva) {
+    public Mesa(String estado, int numero, Reservacion reservacion) {
         this.estado = estado;
         this.numero = numero;
-        this.reserva = reserva;
+        this.reservacion = reservacion;
     }
     
     
@@ -51,13 +51,15 @@ public class Mesa {
         this.numero = numero;
     }
 
-    public Reservacion getReserva() {
-        return reserva;
+    public Reservacion getReservacion() {
+        return reservacion;
     }
 
-    public void setReserva(Reservacion reserva) {
-        this.reserva = reserva;
+    public void setReservacion(Reservacion reservacion) {
+        this.reservacion = reservacion;
     }
+
+   
     
     
 
@@ -92,8 +94,10 @@ public class Mesa {
 
     @Override
     public String toString() {
-        return "Mesa{" + "estado=" + estado + ", numero=" + numero + ", reserva=" + reserva + '}';
+        return "Mesa{" + "estado=" + estado + ", numero=" + numero + ", reservacion=" + reservacion + '}';
     }
+
+ 
 
   
     

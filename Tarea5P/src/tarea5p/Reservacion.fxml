@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="422.0" prefWidth="387.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tarea5p.ReservacionController">
+<AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="452.0" prefWidth="387.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tarea5p.ReservacionController">
    <children>
       <Label layoutX="94.0" layoutY="26.0" prefHeight="28.0" prefWidth="219.0" text="Datos para la reservacion" textAlignment="CENTER">
          <font>
@@ -22,8 +22,10 @@
       <TextField fx:id="tCedula" layoutX="127.0" layoutY="137.0" />
       <TextField fx:id="tNumero" layoutX="127.0" layoutY="186.0" />
       <TextField fx:id="tCorreo" layoutX="127.0" layoutY="248.0" />
-      <Button layoutX="163.0" layoutY="356.0" mnemonicParsing="false" onAction="#accionR" text="Reservar" />
+      <Button layoutX="163.0" layoutY="393.0" mnemonicParsing="false" onAction="#accionR" text="Reservar" />
       <DatePicker fx:id="calendario" layoutX="127.0" layoutY="302.0" />
       <Label fx:id="lFecha" layoutX="57.0" layoutY="306.0" text="Fecha" />
+      <Label fx:id="lHora" layoutX="57.0" layoutY="355.0" text="Hora" />
+      <TextField fx:id="tHora" layoutX="129.0" layoutY="351.0" />
    </children>
 </AnchorPane>

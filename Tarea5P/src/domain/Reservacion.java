@@ -16,17 +16,21 @@ public class Reservacion {
     private String numero;
     private String cedula;
     private String fecha;
+    private String hora;
 
     public Reservacion() {
     }
 
-    public Reservacion(String nombre, String correo, String numero, String cedula, String fecha) {
+    public Reservacion(String nombre, String correo, String numero, String cedula, String fecha, String hora) {
         this.nombre = nombre;
         this.correo = correo;
         this.numero = numero;
         this.cedula = cedula;
         this.fecha = fecha;
+        this.hora = hora;
     }
+
+   
 
     public String getNombre() {
         return nombre;
@@ -68,11 +72,17 @@ public class Reservacion {
         this.fecha = fecha;
     }
 
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
+    }
+
     @Override
     public String toString() {
-        return "Reserva{" + "nombre=" + nombre + ", correo=" + correo + ", numero=" + numero + ", cedula=" + cedula + ", fecha=" + fecha + '}';
-    }
-    
-    
+        return "Reservacion{" + "nombre=" + nombre + ", correo=" + correo + ", numero=" + numero + ", cedula=" + cedula + ", fecha=" + fecha + ", hora=" + hora + '}';
+    }  
 
 }
