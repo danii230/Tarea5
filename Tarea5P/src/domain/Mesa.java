@@ -14,9 +14,10 @@ import java.util.ArrayList;
 public class Mesa {
     private String estado;
     private int numero;
-    private ArrayList<Platillo> pedido;
-    private Pago pago;
-    private Cliente cliente;
+    private Reservacion reservacion;
+//    private ArrayList<Platillo> pedido;
+//    private Pago pago;
+//    private Cliente cliente;
 
     public Mesa() {
     }
@@ -25,6 +26,14 @@ public class Mesa {
         this.estado = estado;
         this.numero = numero;
     }
+
+    public Mesa(String estado, int numero, Reservacion reservacion) {
+        this.estado = estado;
+        this.numero = numero;
+        this.reservacion = reservacion;
+    }
+    
+    
 
     public String getEstado() {
         return estado;
@@ -42,34 +51,54 @@ public class Mesa {
         this.numero = numero;
     }
 
-    public ArrayList<Platillo> getPedido() {
-        return pedido;
+    public Reservacion getReservacion() {
+        return reservacion;
     }
 
-    public void setPedido(ArrayList<Platillo> pedido) {
-        this.pedido = pedido;
+    public void setReservacion(Reservacion reservacion) {
+        this.reservacion = reservacion;
     }
 
-    public Pago getPago() {
-        return pago;
-    }
+   
+    
+    
 
-    public void setPago(Pago pago) {
-        this.pago = pago;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
+//    public ArrayList<Platillo> getPedido() {
+//        return pedido;
+//    }
+//
+//    public void setPedido(ArrayList<Platillo> pedido) {
+//        this.pedido = pedido;
+//    }
+//
+//    public Pago getPago() {
+//        return pago;
+//    }
+//
+//    public void setPago(Pago pago) {
+//        this.pago = pago;
+//    }
+//
+//    public Cliente getCliente() {
+//        return cliente;
+//    }
+//
+//    public void setCliente(Cliente cliente) {
+//        this.cliente = cliente;
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return "Mesa{" + "estado=" + estado + ", numero=" + numero + ", pedido=" + pedido + ", pago=" + pago + ", cliente=" + cliente + '}';
+//    }
 
     @Override
     public String toString() {
-        return "Mesa{" + "estado=" + estado + ", numero=" + numero + ", pedido=" + pedido + ", pago=" + pago + ", cliente=" + cliente + '}';
+        return "Mesa{" + "estado=" + estado + ", numero=" + numero + ", reservacion=" + reservacion + '}';
     }
-    
+
+ 
+
+  
     
 }

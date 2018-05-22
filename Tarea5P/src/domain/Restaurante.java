@@ -27,6 +27,12 @@ public class Restaurante {
 
     }
 
+    public Restaurante() {
+        
+    }
+    
+    
+
     public ArrayList<Object> getListaMesas() {
         return listaMesas;
     }
@@ -50,6 +56,22 @@ public class Restaurante {
     public void setListaPremios(ArrayList<Object> listaPremios) {
         this.listaPremios = listaPremios;
     }
+    
+    public void llenarListaMesa(Mesa mesa){
+        listaMesas.add(mesa);
+    }
+// 
+//   public void llenar(){
+//        Mesa mesa = new Mesa("vacio", 1);
+//        Mesa mesa2 = new Mesa ("vacio,",2);
+//        Mesa mesa3 = new Mesa ("vacio,",3);
+//        
+//        llenarListaMesa(mesa);
+//        llenarListaMesa(mesa2);
+//        llenarListaMesa(mesa3);
+//        
+//        System.out.println(listaMesas.get(0));
+//   }
 
     public ControladorRestaurante getControladorRestaurante() {
         return controladorRestaurante;
