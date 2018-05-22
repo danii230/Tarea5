@@ -15,7 +15,7 @@ public class Mesa {
     private String estado;
     private int numero;
     private Reservacion reservacion;
-//    private ArrayList<Platillo> pedido;
+    private ArrayList<Platillo> pedido;
 //    private Pago pago;
 //    private Cliente cliente;
 
@@ -63,13 +63,13 @@ public class Mesa {
     
     
 
-//    public ArrayList<Platillo> getPedido() {
-//        return pedido;
-//    }
-//
-//    public void setPedido(ArrayList<Platillo> pedido) {
-//        this.pedido = pedido;
-//    }
+    public ArrayList<Platillo> getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(ArrayList<Platillo> pedido) {
+        this.pedido = pedido;
+    }
 //
 //    public Pago getPago() {
 //        return pago;

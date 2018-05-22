@@ -5,6 +5,7 @@
  */
 package tarea5p;
 
+import domain.ClaseObservadora;
 import domain.ControladorRestaurante;
 import domain.Platillo;
 import java.net.URL;
@@ -15,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import domain.Restaurante;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -58,25 +60,41 @@ public class OcupadoController implements Initializable {
     @FXML
     private Button generarCobro;
 
+    @FXML
+    private Button ordenarPedido;
+
     private int posicionMenuTabla;
     private int posicionListaPedidos;
     public Platillo platilloSeleccionado;
     ControladorRestaurante controladorRestaurante;
+    ArrayList<Object> listaDePedidos;
 
     @FXML
     private void añadir(ActionEvent event) {
         pedidos.add(platilloSeleccionado);
-        System.out.print("la lista de pedidos" + pedidos.get(0).toString());
+
+        listaDePedidos.add(platilloSeleccionado);
 
     }
 
     @FXML
     private void retirar(ActionEvent event) {
         pedidos.remove(posicionListaPedidos);
+        listaDePedidos.remove(platilloSeleccionado);
     }
 
     @FXML
     private void generarCobro(ActionEvent event) {
+
+    }
+
+    @FXML
+    private void ordenarPedido(ActionEvent event) {
+        ClaseObservadora claseObservadora= new ClaseObservadora();
+        claseObservadora.getMesa().se
+        
+        
+
     }
 
     private final ListChangeListener<Platillo> selectorTablaPLatillos
@@ -132,7 +150,6 @@ public class OcupadoController implements Initializable {
 
         if (platillo != null) {
             platilloSeleccionado = platillo;
-            System.out.println("Platillo!!!" + platilloSeleccionado.toString());
 
 //            pedidos.add(platillo);
         }
@@ -162,33 +179,23 @@ public class OcupadoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        try {
-            // Inicializamos la tabla
-            this.inicializarTablaPedidos();
-            this.inicializarTablaPlatillos();
+        // Inicializamos la tabla
+        this.inicializarTablaPedidos();
+        this.inicializarTablaPlatillos();
+        controladorRestaurante = new ControladorRestaurante();
+        // Seleccionar las tuplas de la tabla de las personas
+        final ObservableList<Platillo> tablaPersonaSel = tablaMenu.getSelectionModel().getSelectedItems();
+        tablaPersonaSel.addListener(selectorTablaPLatillos);
+        // Inicializamos la tabla con algunos datos aleatorios
+        for (int i = 0; i < controladorRestaurante.getRestaurante().getListaMenu().size(); i++) {
+            Platillo p1 = new Platillo();
+            p1 = (Platillo) controladorRestaurante.getRestaurante().getListaMenu().get(i);
+            System.out.println(p1.toString());
 
-            controladorRestaurante = new ControladorRestaurante();
-
-            // Seleccionar las tuplas de la tabla de las personas
-            final ObservableList<Platillo> tablaPersonaSel = tablaMenu.getSelectionModel().getSelectedItems();
-            tablaPersonaSel.addListener(selectorTablaPLatillos);
-
-            // Inicializamos la tabla con algunos datos aleatorios
-            for (int i = 0; i < controladorRestaurante.getRestaurante().getListaMenu().size(); i++) {
-                Platillo p1 = new Platillo();
-                p1 = (Platillo) controladorRestaurante.getRestaurante().getListaMenu().get(i);
-                System.out.println(p1.toString());
-
-                platillos.add(p1);
-            }
-
-            // Seleccionar las tuplas de la tabla de las personas
-            final ObservableList<Platillo> tablaPersonaSel2 = tablaPedidos.getSelectionModel().getSelectedItems();
-            tablaPersonaSel2.addListener(selectorTablaPLatillosPedidos);
-        } catch (ParseException ex) {
-            Logger.getLogger(OcupadoController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(OcupadoController.class.getName()).log(Level.SEVERE, null, ex);
+            platillos.add(p1);
         }
+        // Seleccionar las tuplas de la tabla de las personas
+        final ObservableList<Platillo> tablaPersonaSel2 = tablaPedidos.getSelectionModel().getSelectedItems();
+        tablaPersonaSel2.addListener(selectorTablaPLatillosPedidos);
     }
 }

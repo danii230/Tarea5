@@ -10,6 +10,7 @@ package domain;
  * @author daniela
  */
 public class Pago {
+
     private int numeroMesa;
 
     public Pago() {
@@ -26,6 +27,5 @@ public class Pago {
     public void setNumeroMesa(int numeroMesa) {
         this.numeroMesa = numeroMesa;
     }
-    
-    
+
 }
