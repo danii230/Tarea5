@@ -33,9 +33,10 @@ public class Pruebas {
             FileManagerJson fmj = new FileManagerJson();
             // mesa
             ArrayList<Object> mesas = new ArrayList<>();
-            Mesa mesa1 = new Mesa("vacio", 1);
-            Mesa mesa2 = new Mesa("vacio", 2);
-            Mesa mesa3 = new Mesa("vacio", 3);
+            Mesa mesa1 = new Mesa("vacia", 0);
+            mesa1.setPremio(20);
+            Mesa mesa2 = new Mesa("vacia", 1);
+            Mesa mesa3 = new Mesa("vacia", 2);
             mesas.add(mesa1);
             mesas.add(mesa2);
             mesas.add(mesa3);

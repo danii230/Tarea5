@@ -27,12 +27,6 @@ public class Restaurante {
 
     }
 
-    public Restaurante() {
-        
-    }
-    
-    
-
     public ArrayList<Object> getListaMesas() {
         return listaMesas;
     }
@@ -56,8 +50,8 @@ public class Restaurante {
     public void setListaPremios(ArrayList<Object> listaPremios) {
         this.listaPremios = listaPremios;
     }
-    
-    public void llenarListaMesa(Mesa mesa){
+
+    public void llenarListaMesa(Mesa mesa) {
         listaMesas.add(mesa);
     }
 // 

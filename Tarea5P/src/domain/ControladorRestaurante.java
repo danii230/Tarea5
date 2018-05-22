@@ -24,11 +24,17 @@ public class ControladorRestaurante {
 
     private static Restaurante restaurante;
 
-    public ControladorRestaurante() throws ParseException, IOException {
-        restaurante = new Restaurante();
-        llenarListaMenu();
-        llenarListaMesas();
-        llenarListaPremios();
+    public ControladorRestaurante() {
+        try {
+            restaurante = new Restaurante();
+            llenarListaMenu();
+            llenarListaMesas();
+            llenarListaPremios();
+        } catch (ParseException ex) {
+            Logger.getLogger(ControladorRestaurante.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(ControladorRestaurante.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
 

@@ -5,7 +5,9 @@
  */
 package tarea5p;
 
+import domain.ClaseObservadora;
 import domain.ControladorRestaurante;
+import domain.Mesa;
 import domain.Platillo;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -14,7 +16,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import domain.Restaurante;
+import file.FileManagerJson;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,6 +26,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.json.simple.parser.ParseException;
@@ -58,25 +63,69 @@ public class OcupadoController implements Initializable {
     @FXML
     private Button generarCobro;
 
+    @FXML
+    private Button ordenarPedido;
+    @FXML
+    private Label suma;
+
     private int posicionMenuTabla;
     private int posicionListaPedidos;
     public Platillo platilloSeleccionado;
     ControladorRestaurante controladorRestaurante;
+    Restaurante restaurante;
+    ArrayList<Object> listaDePedidos;
+    ClaseObservadora claseObservadora;
 
     @FXML
     private void añadir(ActionEvent event) {
         pedidos.add(platilloSeleccionado);
-        System.out.print("la lista de pedidos" + pedidos.get(0).toString());
 
     }
 
     @FXML
     private void retirar(ActionEvent event) {
         pedidos.remove(posicionListaPedidos);
+
     }
 
     @FXML
     private void generarCobro(ActionEvent event) {
+        int suma1 = 0;
+        if (claseObservadora.getMesa().getPremio() == 0) {
+            for (int i = 0; i < pedidos.size(); i++) {
+                suma1 += pedidos.get(i).getPrecio();
+
+            }
+            suma.setText("Total a pagar" + suma1 + "");
+        }
+
+        if (claseObservadora.getMesa().getPremio() != 0) {
+            for (int i = 0; i < pedidos.size(); i++) {
+                suma1 += pedidos.get(i).getPrecio();
+
+            }
+            suma.setText(suma1 + "");
+//
+            int totalDescuento = 0;
+            totalDescuento = (claseObservadora.getMesa().getPremio() * suma1) / 100;
+            int totalFinal = suma1 - totalDescuento;
+            suma.setText("Total: " + suma1
+                    + "\n con un descuento de: " + claseObservadora.getMesa().getPremio()
+                    + "\n total a pagar: " + totalFinal);
+        }
+    }
+
+    @FXML
+    private void ordenarPedido(ActionEvent event) {
+        for (int i = 0; i < pedidos.size(); i++) {
+            Object platillos = (Platillo) pedidos.get(i);
+
+            listaDePedidos.add(platillos);
+
+        }
+
+        claseObservadora.getMesa().setPedido(listaDePedidos);
+
     }
 
     private final ListChangeListener<Platillo> selectorTablaPLatillos
@@ -132,7 +181,6 @@ public class OcupadoController implements Initializable {
 
         if (platillo != null) {
             platilloSeleccionado = platillo;
-            System.out.println("Platillo!!!" + platilloSeleccionado.toString());
 
 //            pedidos.add(platillo);
         }
@@ -161,34 +209,39 @@ public class OcupadoController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        listaDePedidos = new ArrayList<>();
+        restaurante = controladorRestaurante.getRestaurante();
+        // Inicializamos la tabla
+        this.inicializarTablaPedidos();
+        this.inicializarTablaPlatillos();
 
-        try {
-            // Inicializamos la tabla
-            this.inicializarTablaPedidos();
-            this.inicializarTablaPlatillos();
+        // Seleccionar las tuplas de la tabla de las personas
+        final ObservableList<Platillo> tablaPersonaSel = tablaMenu.getSelectionModel().getSelectedItems();
+        tablaPersonaSel.addListener(selectorTablaPLatillos);
+        // Inicializamos la tabla con algunos datos aleatorios
+        for (int i = 0; i < controladorRestaurante.getRestaurante().getListaMenu().size(); i++) {
+            Platillo p1 = new Platillo();
+            p1 = (Platillo) controladorRestaurante.getRestaurante().getListaMenu().get(i);
+            System.out.println(p1.toString());
 
-            controladorRestaurante = new ControladorRestaurante();
+            platillos.add(p1);
+        }
 
-            // Seleccionar las tuplas de la tabla de las personas
-            final ObservableList<Platillo> tablaPersonaSel = tablaMenu.getSelectionModel().getSelectedItems();
-            tablaPersonaSel.addListener(selectorTablaPLatillos);
+        // Seleccionar las tuplas de la tabla de las personas
+        final ObservableList<Platillo> tablaPersonaSel2 = tablaPedidos.getSelectionModel().getSelectedItems();
+        tablaPersonaSel2.addListener(selectorTablaPLatillosPedidos);
 
-            // Inicializamos la tabla con algunos datos aleatorios
-            for (int i = 0; i < controladorRestaurante.getRestaurante().getListaMenu().size(); i++) {
+        if (claseObservadora.getMesa().getPedido() != null) {
+            Mesa mesaTemp = new Mesa();
+            mesaTemp = (Mesa) controladorRestaurante.getRestaurante().getListaMesas().get(claseObservadora.getMesa().getNumero());
+            for (int i = 0; i < mesaTemp.getPedido().size(); i++) {
                 Platillo p1 = new Platillo();
-                p1 = (Platillo) controladorRestaurante.getRestaurante().getListaMenu().get(i);
+                p1 = (Platillo) mesaTemp.getPedido().get(i);
                 System.out.println(p1.toString());
 
-                platillos.add(p1);
-            }
+                pedidos.add(p1);
 
-            // Seleccionar las tuplas de la tabla de las personas
-            final ObservableList<Platillo> tablaPersonaSel2 = tablaPedidos.getSelectionModel().getSelectedItems();
-            tablaPersonaSel2.addListener(selectorTablaPLatillosPedidos);
-        } catch (ParseException ex) {
-            Logger.getLogger(OcupadoController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(OcupadoController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 }

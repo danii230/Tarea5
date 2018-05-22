@@ -5,11 +5,14 @@
  */
 package tarea5p;
 
+import domain.ClaseObservadora;
+import domain.ControladorRestaurante;
 import domain.Mesa;
 import domain.Reservacion;
 import domain.Restaurante;
 import tarea5p.*;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,7 +21,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import static tarea5p.FXMLController.mesas;
+//import static tarea5p.FXMLController.mesas;
 
 /**
  * FXML Controller class
@@ -26,8 +29,6 @@ import static tarea5p.FXMLController.mesas;
  * @author daniela
  */
 public class ReservacionController implements Initializable {
-    
-    
 
     /**
      * Initializes the controller class.
@@ -64,28 +65,23 @@ public class ReservacionController implements Initializable {
 
     @FXML
     private Label lFecha;
-    
+
     @FXML
     private TextField tHora;
 
     Reservacion reserva;
-    // Mesa mesa = new Mesa();
-//    Mesa mesaSelec;
+    ClaseObservadora claseObservadora;
+    ControladorRestaurante controladorRestaurante;
+    Restaurante restaurante;
+    ArrayList<Object> mesas;
+//    FXMLController controller = new FXMLController();
 //    
-//    
-//
-//    public ReservacionController(Mesa mesa) {
-//        this.mesaSelec = mesa;
-//        
-//    }
-    
-    FXMLController controller = new FXMLController();
-//    
-    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         reserva = new Reservacion();
+        restaurante = controladorRestaurante.getRestaurante();
+        mesas = restaurante.getListaMesas();
 
         String backgroundImage = "/imagen/tabla.jpeg";
         anchorPane.setStyle("-fx-background-image: url('" + backgroundImage + "'); "
@@ -97,60 +93,59 @@ public class ReservacionController implements Initializable {
 
     @FXML
     void accionR(ActionEvent event) {
-        
-        if(controller.numero==1){
-        String nombre = tNombre.getText();
-        String cedula = tCedula.getText();
-        String numero = tNumero.getText();
-        String correo = tCorreo.getText();
-       
-        String dia = (calendario.getValue().getDayOfMonth()+"");
-        String mes = (calendario.getValue().getMonth()+"");
-        String año = (calendario.getValue().getYear()+"");
-        String fecha = (dia+"-"+mes+"-"+año);
-        
-        String hora = tHora.getText();
-        reserva = new Reservacion(nombre, cedula, numero, correo, fecha, hora);
-        Mesa mesaR = new Mesa("reservada", 1, reserva);
-        mesas.set(0, mesaR);
-        System.out.println(mesas.get(0));
-        }
-        
-       else if(controller.numero==2){
-        String nombre = tNombre.getText();
-        String cedula = tCedula.getText();
-        String numero = tNumero.getText();
-        String correo = tCorreo.getText();
-        
-        String dia = (calendario.getValue().getDayOfMonth()+"");
-        String mes = (calendario.getValue().getMonth()+"");
-        String año = (calendario.getValue().getYear()+"");
-        String fecha = (dia+"-"+mes+"-"+año);
-        
-        String hora = tHora.getText();
-        reserva = new Reservacion(nombre, cedula, numero, correo, fecha, hora);
-        Mesa mesaR = new Mesa("reservada", 2, reserva);
-        mesas.set(1, mesaR);
-        System.out.println(mesas.get(1));
-        }
-        else if(controller.numero==3){
-        String nombre = tNombre.getText();
-        String cedula = tCedula.getText();
-        String numero = tNumero.getText();
-        String correo = tCorreo.getText();
-        
-        
-        String dia = (calendario.getValue().getDayOfMonth()+"");
-        String mes = (calendario.getValue().getMonth()+"");
-        String año = (calendario.getValue().getYear()+"");
-        String fecha = (dia+"-"+mes+"-"+año);
-        
-        String hora = tHora.getText();
-        reserva = new Reservacion(nombre, cedula, numero, correo, fecha, hora);
-        Mesa mesaR = new Mesa("reservada", 3, reserva);
-        mesas.set(2, mesaR);
-        System.out.println(mesas.get(2));
+
+        if (claseObservadora.getMesa().getNumero() == 0) {
+            String nombre = tNombre.getText();
+            String cedula = tCedula.getText();
+            String numero = tNumero.getText();
+            String correo = tCorreo.getText();
+
+            String dia = (calendario.getValue().getDayOfMonth() + "");
+            String mes = (calendario.getValue().getMonth() + "");
+            String año = (calendario.getValue().getYear() + "");
+            String fecha = (dia + "-" + mes + "-" + año);
+
+            String hora = tHora.getText();
+            reserva = new Reservacion(nombre, cedula, numero, correo, fecha, hora);
+            Mesa mesaR = new Mesa("reservada", 0, reserva);
+
+            mesas.set(0, mesaR);
+            System.out.println(mesas.get(0));
+            restaurante.setListaMesas(mesas);
+        } else if (claseObservadora.getMesa().getNumero() == 1) {
+            String nombre = tNombre.getText();
+            String cedula = tCedula.getText();
+            String numero = tNumero.getText();
+            String correo = tCorreo.getText();
+
+            String dia = (calendario.getValue().getDayOfMonth() + "");
+            String mes = (calendario.getValue().getMonth() + "");
+            String año = (calendario.getValue().getYear() + "");
+            String fecha = (dia + "-" + mes + "-" + año);
+
+            String hora = tHora.getText();
+            reserva = new Reservacion(nombre, cedula, numero, correo, fecha, hora);
+            Mesa mesaR = new Mesa("reservada", 1, reserva);
+            mesas.set(1, mesaR);
+            System.out.println(mesas.get(1));
+            restaurante.setListaMesas(mesas);
+        } else if (claseObservadora.getMesa().getNumero() == 2) {
+            String nombre = tNombre.getText();
+            String cedula = tCedula.getText();
+            String numero = tNumero.getText();
+            String correo = tCorreo.getText();
+
+            String dia = (calendario.getValue().getDayOfMonth() + "");
+            String mes = (calendario.getValue().getMonth() + "");
+            String año = (calendario.getValue().getYear() + "");
+            String fecha = (dia + "-" + mes + "-" + año);
+
+            String hora = tHora.getText();
+            reserva = new Reservacion(nombre, cedula, numero, correo, fecha, hora);
+            Mesa mesaR = new Mesa("reservada", 2, reserva);
+            mesas.set(2, mesaR);
+            System.out.println(mesas.get(2));
+            restaurante.setListaMesas(mesas);
         }
     }
 }
-

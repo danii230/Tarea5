@@ -5,16 +5,19 @@
  */
 package tarea5p;
 
+import domain.ClaseObservadora;
+import domain.ControladorRestaurante;
 import domain.Mesa;
 import domain.Reservacion;
+import domain.Restaurante;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import static tarea5p.FXMLController.mesas;
 
 /**
  * FXML Controller class
@@ -29,7 +32,7 @@ public class CancelarController implements Initializable {
      */
     @FXML
     private AnchorPane anchorPane;
-    
+
     @FXML
     private Label lNombre;
 
@@ -59,76 +62,82 @@ public class CancelarController implements Initializable {
 
     @FXML
     private Label fecha;
-    
+
     @FXML
     private Label hora;
-     FXMLController controller = new FXMLController();
-     
-   
-    
+
+    ClaseObservadora claseObservadora;
+    ControladorRestaurante controladorRestaurante;
+//    FXMLController controller = new FXMLController();
+    ArrayList<Object> mesas;
+    Restaurante restaurante;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
+        restaurante = controladorRestaurante.getRestaurante();
+        mesas = restaurante.getListaMesas();
         String backgroundImage = "/imagen/tabla.jpeg";
         anchorPane.setStyle("-fx-background-image: url('" + backgroundImage + "'); "
                 + "-fx-background-position: left top, center;"
                 + "-fx-background-repeat: no-repeat;"
                 + "-fx-background-size: cover, auto;");
-        
-        if(controller.numero==1){
-        Mesa mesa = (Mesa) mesas.get(0);
-        Reservacion rese = mesa.getReservacion();
-        nombre.setText(rese.getNombre());
-        cedula.setText(rese.getCedula());
-        numero.setText(rese.getNumero());
-        correo.setText(rese.getCorreo());
-        fecha.setText(rese.getFecha());
-        hora.setText(rese.getHora());
-        
-        
-        
-        } else if(controller.numero==2){
-        Mesa mesa = (Mesa) mesas.get(1);
-         Reservacion rese = mesa.getReservacion();
-        nombre.setText(rese.getNombre());
-        cedula.setText(rese.getCedula());
-        numero.setText(rese.getNumero());
-        correo.setText(rese.getCorreo());
-         fecha.setText(rese.getFecha());
-         hora.setText(rese.getHora());
-        
-        } else if(controller.numero==3){
-        Mesa mesa = (Mesa) mesas.get(2);
-         Reservacion rese = mesa.getReservacion();
-        nombre.setText(rese.getNombre());
-        cedula.setText(rese.getCedula());
-        numero.setText(rese.getNumero());
-        correo.setText(rese.getCorreo());
-         fecha.setText(rese.getFecha());
-         hora.setText(rese.getHora());
-       
+
+        if (claseObservadora.getMesa().getNumero() == 0) {
+            Mesa mesa = (Mesa) mesas.get(0);
+            Reservacion rese = mesa.getReservacion();
+            nombre.setText(rese.getNombre());
+            cedula.setText(rese.getCedula());
+            numero.setText(rese.getNumero());
+            correo.setText(rese.getCorreo());
+            fecha.setText(rese.getFecha());
+            hora.setText(rese.getHora());
+
+        } else if (claseObservadora.getMesa().getNumero() == 1) {
+            Mesa mesa = (Mesa) mesas.get(1);
+            Reservacion rese = mesa.getReservacion();
+            nombre.setText(rese.getNombre());
+            cedula.setText(rese.getCedula());
+            numero.setText(rese.getNumero());
+            correo.setText(rese.getCorreo());
+            fecha.setText(rese.getFecha());
+            hora.setText(rese.getHora());
+
+        } else if (claseObservadora.getMesa().getNumero() == 3) {
+            Mesa mesa = (Mesa) mesas.get(2);
+            Reservacion rese = mesa.getReservacion();
+            nombre.setText(rese.getNombre());
+            cedula.setText(rese.getCedula());
+            numero.setText(rese.getNumero());
+            correo.setText(rese.getCorreo());
+            fecha.setText(rese.getFecha());
+            hora.setText(rese.getHora());
+
         }
     }
 
     @FXML
     void accionC(ActionEvent event) {
-        if(controller.numero==1){
-        //Mesa mesa = (Mesa) mesas.get(0);
-        Mesa mesaC = new Mesa("vacia", 1);
-        mesas.set(0, mesaC);
-        System.out.println(mesas.get(0));
-        
-        } else if(controller.numero==2){
-       // Mesa mesa = (Mesa) mesas.get(1);
-        Mesa mesaC = new Mesa("vacia", 2);
-        mesas.set(1, mesaC);
-        System.out.println(mesas.get(1));
-        
-        } else if(controller.numero==3){
-       // Mesa mesa = (Mesa) mesas.get(2);
-        Mesa mesaC = new Mesa("vacia", 3);
-        mesas.set(2, mesaC);
-        System.out.println(mesas.get(2));
+        if (claseObservadora.getMesa().getNumero() == 0) {
+            //Mesa mesa = (Mesa) mesas.get(0);
+            Mesa mesaC = new Mesa("vacia", 0);
+            mesas.set(0, mesaC);
+            System.out.println(mesas.get(0));
+            restaurante.setListaMesas(mesas);
+
+        } else if (claseObservadora.getMesa().getNumero() == 1) {
+            // Mesa mesa = (Mesa) mesas.get(1);
+            Mesa mesaC = new Mesa("vacia", 1);
+            mesas.set(1, mesaC);
+            System.out.println(mesas.get(1));
+            restaurante.setListaMesas(mesas);
+
+        } else if (claseObservadora.getMesa().getNumero() == 2) {
+            // Mesa mesa = (Mesa) mesas.get(2);
+            Mesa mesaC = new Mesa("vacia", 2);
+            mesas.set(2, mesaC);
+            System.out.println(mesas.get(2));
+            restaurante.setListaMesas(mesas);
         }
     }
 
