@@ -9,20 +9,23 @@ package domain;
  *
  * @author daniela
  */
-public class Cliente {
- private String nombre;
- private String correo;
- private String numero;
- private String cedula;
+public class Reservacion {
 
-    public Cliente() {
+    private String nombre;
+    private String correo;
+    private String numero;
+    private String cedula;
+    private String fecha;
+
+    public Reservacion() {
     }
 
-    public Cliente(String nombre, String correo, String numero, String cedula) {
+    public Reservacion(String nombre, String correo, String numero, String cedula, String fecha) {
         this.nombre = nombre;
         this.correo = correo;
         this.numero = numero;
         this.cedula = cedula;
+        this.fecha = fecha;
     }
 
     public String getNombre() {
@@ -57,10 +60,19 @@ public class Cliente {
         this.cedula = cedula;
     }
 
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
     @Override
     public String toString() {
-        return "Cliente{" + "nombre=" + nombre + ", correo=" + correo + ", numero=" + numero + ", cedula=" + cedula + '}';
+        return "Reserva{" + "nombre=" + nombre + ", correo=" + correo + ", numero=" + numero + ", cedula=" + cedula + ", fecha=" + fecha + '}';
     }
- 
- 
+    
+    
+
 }
